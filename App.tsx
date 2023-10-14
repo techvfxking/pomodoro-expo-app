@@ -1,20 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View } from 'react-native';
+import styles from './App.Styles';
+import Timer from './src/Timer';
 
-export default function App() {
+const App: React.FC = () => {
+  const [timerModeValue, setTimerModeValue] = useState<'Focus' | 'Break'>('Focus');
+  const getTimerModeValue = (e: 'Focus' | 'Break') => {
+    setTimerModeValue(e);
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <View style={{ ...styles.container, ...{ backgroundColor: timerModeValue === 'Break' ? "#2a9d8f" : '#d95550' } }}>
       <StatusBar style="auto" />
+      <Timer timerModeValue={ getTimerModeValue} />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
