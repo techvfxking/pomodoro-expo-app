@@ -10,11 +10,18 @@ const App: React.FC = () => {
     setTimerModeValue(e);
   }
   return (
-    <View style={{ ...styles.container, ...{ backgroundColor: timerModeValue === 'Break' ? "#2a9d8f" : '#d95550' } }}>
+    <View
+      style={{
+        ...styles.container,
+        ...{
+          backgroundColor: timerModeValue === 'Break' ? '#84DCCF' : '#FAA381',
+        },
+      }}
+    >
       <StatusBar style="auto" />
-      <Timer timerModeValue={ getTimerModeValue} />
+      <Timer timerModeValue={getTimerModeValue} />
     </View>
-  );
+  )
 }
 
 export default App;
